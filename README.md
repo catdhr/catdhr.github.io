@@ -18,5 +18,5 @@ Welcome! I'm a learning Roblox scripter and builder, willing to make your desire
 - Functional Scripts
 - Logos and Banners
 - Needed Builder or Scripter for your Game
- git commit --allow-empty -m "Trigger rebuild"
-git push
+
+
