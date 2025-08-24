@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Freelance Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            padding: 1rem 0;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            padding: 2rem 0;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            margin: 2rem 0;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Portfolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .portfolio-item {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .portfolio-item h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        /* Form Styles */
+        .form-section {
+            display: none;
+        }
+
+        .form-section.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #666;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: #667eea;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #e0e0e0;
+            color: #666;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 90%;
+            max-height: 90%;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .modal-close:hover {
+            color: #333;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .form-buttons {
+                flex-direction: column;
+            }
+
+            .section {
+                padding: 2rem;
+                margin: 1rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="nav-content">
+                <div class="logo">FreelancePro</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section id="home" class="section hero">
+            <h1>Professional Freelance Services</h1>
+            <p>Transform your ideas into reality with high-quality, custom solutions tailored to your needs. From web development to design, I deliver excellence every time.</p>
+            <button class="cta-button" onclick="showRequestForm()">Request a Job</button>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="section">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: #667eea;">My Portfolio</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <h3>Web Development</h3>
+                    <p>Custom websites and web applications built with modern technologies. Responsive, fast, and user-friendly solutions.</p>
+                </div>
+                <div class="portfolio-item">
+                    <h3>UI/UX Design</h3>
+                    <p>Beautiful, intuitive interfaces that provide exceptional user experiences. From wireframes to final designs.</p>
+                </div>
+                <div class="portfolio-item">
+                    <h3>Mobile Apps</h3>
+                    <p>Cross-platform mobile applications that work seamlessly on iOS and Android devices.</p>
+                </div>
+                <div class="portfolio-item">
+                    <h3>E-commerce Solutions</h3>
+                    <p>Complete online stores with payment integration, inventory management, and customer support.</p>
+                </div>
+                <div class="portfolio-item">
+                    <h3>Brand Identity</h3>
+                    <p>Logo design, brand guidelines, and marketing materials that make your business stand out.</p>
+                </div>
+                <div class="portfolio-item">
+                    <h3>Content Management</h3>
+                    <p>Easy-to-use CMS solutions that allow you to update and manage your content effortlessly.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: #667eea;">Services Offered</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem;">I specialize in delivering high-quality digital solutions that help businesses grow and succeed online.</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                    <div style="text-align: center; padding: 1rem;">
+                        <h4 style="color: #667eea; margin-bottom: 0.5rem;">⚡ Fast Delivery</h4>
+                        <p>Quick turnaround times without compromising on quality</p>
+                    </div>
+                    <div style="text-align: center; padding: 1rem;">
+                        <h4 style="color: #667eea; margin-bottom: 0.5rem;">🎯 Custom Solutions</h4>
+                        <p>Tailored to your specific requirements and goals</p>
+                    </div>
+                    <div style="text-align: center; padding: 1rem;">
+                        <h4 style="color: #667eea; margin-bottom: 0.5rem;">💬 24/7 Support</h4>
+                        <p>Always available to answer questions and provide updates</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Job Request Modal -->
+    <div id="requestModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="hideRequestForm()">&times;</button>
+            <h2 style="color: #667eea; margin-bottom: 2rem; text-align: center;">Request a Job</h2>
+            <form id="jobRequestForm">
+                <div class="form-group">
+                    <label for="projectTitle">Project Title *</label>
+                    <input type="text" id="projectTitle" name="projectTitle" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="projectType">Project Type *</label>
+                    <select id="projectType" name="projectType" required>
+                        <option value="">Select project type</option>
+                        <option value="web-development">Web Development</option>
+                        <option value="mobile-app">Mobile App</option>
+                        <option value="ui-ux-design">UI/UX Design</option>
+                        <option value="e-commerce">E-commerce</option>
+                        <option value="branding">Brand Identity</option>
+                        <option value="cms">Content Management</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="projectDescription">Project Description *</label>
+                    <textarea id="projectDescription" name="projectDescription" placeholder="Please provide detailed information about your project requirements..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="budget">Budget Range *</label>
+                    <select id="budget" name="budget" required>
+                        <option value="">Select budget range</option>
+                        <option value="under-500">Under $500</option>
+                        <option value="500-1000">$500 - $1,000</option>
+                        <option value="1000-2500">$1,000 - $2,500</option>
+                        <option value="2500-5000">$2,500 - $5,000</option>
+                        <option value="5000-10000">$5,000 - $10,000</option>
+                        <option value="over-10000">Over $10,000</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="timeline">Expected Timeline</label>
+                    <select id="timeline" name="timeline">
+                        <option value="">Select timeline</option>
+                        <option value="rush-1week">Rush (1 week) - +50% fee</option>
+                        <option value="standard-2-4weeks">Standard (2-4 weeks)</option>
+                        <option value="flexible-1-2months">Flexible (1-2 months)</option>
+                        <option value="long-term">Long-term project</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="discordUsername">Discord Username *</label>
+                    <input type="text" id="discordUsername" name="discordUsername" placeholder="username#1234" required>
+                    <small style="color: #666;">I'll contact you via Discord to discuss your project</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address (Optional)</label>
+                    <input type="email" id="email" name="email" placeholder="your@email.com">
+                </div>
+
+                <div class="form-buttons">
+                    <button type="button" class="btn-secondary" onclick="hideRequestForm()">Cancel</button>
+                    <button type="submit" class="cta-button">Submit Request</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Info Modal -->
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="hideInfoModal()">&times;</button>
+            <h2 style="color: #667eea; margin-bottom: 2rem;">Information</h2>
+            <div style="max-width: 600px;">
+                <h3 style="color: #333; margin-bottom: 1rem;">How It Works</h3>
+                <ol style="margin-bottom: 2rem; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 0.5rem;">Submit your project request with details</li>
+                    <li style="margin-bottom: 0.5rem;">I'll contact you via Discord within 24 hours</li>
+                    <li style="margin-bottom: 0.5rem;">We discuss requirements and finalize pricing</li>
+                    <li style="margin-bottom: 0.5rem;">Work begins after 50% deposit</li>
+                    <li style="margin-bottom: 0.5rem;">Regular updates and revisions included</li>
+                    <li style="margin-bottom: 0.5rem;">Final delivery and remaining payment</li>
+                </ol>
+
+                <h3 style="color: #333; margin-bottom: 1rem;">Pricing Policy</h3>
+                <ul style="margin-bottom: 2rem; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 0.5rem;">Competitive rates based on project complexity</li>
+                    <li style="margin-bottom: 0.5rem;">Rush jobs incur a 50% additional fee</li>
+                    <li style="margin-bottom: 0.5rem;">Multiple revisions included in base price</li>
+                    <li style="margin-bottom: 0.5rem;">Payment via PayPal, Stripe, or crypto</li>
+                </ul>
+
+                <h3 style="color: #333; margin-bottom: 1rem;">What's Included</h3>
+                <ul style="padding-left: 1.5rem;">
+                    <li style="margin-bottom: 0.5rem;">Source files and documentation</li>
+                    <li style="margin-bottom: 0.5rem;">30 days of free support</li>
+                    <li style="margin-bottom: 0.5rem;">Mobile-responsive design</li>
+                    <li style="margin-bottom: 0.5rem;">SEO optimization (web projects)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Support Modal -->
+    <div id="supportModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="hideSupportModal()">&times;</button>
+            <h2 style="color: #667eea; margin-bottom: 2rem;">Support</h2>
+            <div style="max-width: 600px;">
+                <h3 style="color: #333; margin-bottom: 1rem;">Get Help</h3>
+                <p style="margin-bottom: 1.5rem;">Need assistance? I'm here to help! Choose the best way to reach me:</p>
+
+                <div style="display: grid; gap: 1rem; margin-bottom: 2rem;">
+                    <div style="padding: 1rem; background: #f8f9fa; border-radius: 10px;">
+                        <h4 style="color: #667eea; margin-bottom: 0.5rem;">💬 Discord (Fastest)</h4>
+                        <p>For immediate responses and project discussions</p>
+                        <strong>Response time: Usually within 1-2 hours</strong>
+                    </div>
+                    <div style="padding: 1rem; background: #f8f9fa; border-radius: 10px;">
+                        <h4 style="color: #667eea; margin-bottom: 0.5rem;">📧 Email</h4>
+                        <p>For formal inquiries and detailed project briefs</p>
+                        <strong>Response time: Within 24 hours</strong>
+                    </div>
+                </div>
+
+                <h3 style="color: #333; margin-bottom: 1rem;">Frequently Asked Questions</h3>
+                <div style="margin-bottom: 1rem;">
+                    <strong>How long do projects typically take?</strong>
+                    <p>Timeline varies by complexity. Simple projects: 1-2 weeks, Complex projects: 4-8 weeks.</p>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <strong>Do you offer refunds?</strong>
+                    <p>Yes, if I can't deliver what was agreed upon. Partial refunds available for cancelled projects.</p>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <strong>What payment methods do you accept?</strong>
+                    <p>PayPal, Stripe (credit/debit cards), and major cryptocurrencies.</p>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <strong>Do you sign NDAs?</strong>
+                    <p>Absolutely! I'm happy to sign confidentiality agreements for sensitive projects.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <a href="#portfolio">Web Development</a>
+                    <a href="#portfolio">Mobile Apps</a>
+                    <a href="#portfolio">UI/UX Design</a>
+                    <a href="#portfolio">E-commerce</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <a href="#" onclick="showInfoModal()">Information</a>
+                    <a href="#" onclick="showSupportModal()">Support</a>
+                    <a href="#portfolio">Portfolio</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Available 24/7 via Discord</p>
+                    <p>Response within 24 hours</p>
+                    <a href="#" onclick="showRequestForm()">Request Quote</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 FreelancePro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Modal Functions
+        function showRequestForm() {
+            document.getElementById('requestModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideRequestForm() {
+            document.getElementById('requestModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+            document.getElementById('jobRequestForm').reset();
+        }
+
+        function showInfoModal() {
+            document.getElementById('infoModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideInfoModal() {
+            document.getElementById('infoModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function showSupportModal() {
+            document.getElementById('supportModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideSupportModal() {
+            document.getElementById('supportModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('jobRequestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Here you would normally send the data to your server
+            // For now, we'll show a success message
+            alert('Thank you for your request! I\'ll contact you on Discord within 24 hours to discuss your project details.');
+            
+            // Close modal and reset form
+            hideRequestForm();
+            
+            // You can add code here to send the form data to your email or database
+            console.log('Form submitted:', data);
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate portfolio items on scroll
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            portfolioItems.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(item);
+            });
+        });
+    </script>
+</body>
+</html>
